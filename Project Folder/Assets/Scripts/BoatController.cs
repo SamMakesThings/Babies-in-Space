@@ -10,10 +10,9 @@ public class BoatController : MonoBehaviour {
     public float breakSpeed = 10f;
     public string inputHrz = "Horizontal_p1";
     public string inputVrt = "Vertical_p1";
-    public string inputCHrz = "Horizontal_c_p1";
-    public string inputCVrt = "Vertical_c_p1";
     public string inputFire = "Fire1_p1";
     public GameObject bulletPrefab;
+    public GameObject cam;
 
     // Use this for initialization
     void Start () {
@@ -52,8 +51,8 @@ public class BoatController : MonoBehaviour {
 
         //}
 
-        transform.Rotate(0, Input.GetAxis(inputHrz) * rotSpeed, 0);
-        rb.AddForce(transform.forward * Input.GetAxis(inputVrt) * rotSpeed);
+        rb.AddForce(cam.transform.forward * Input.GetAxis(inputVrt) * speed);
+        rb.AddForce(cam.transform.right * Input.GetAxis(inputHrz) * speed);
 
         if (Input.GetButtonDown(inputFire))
         {

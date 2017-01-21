@@ -5,23 +5,23 @@ Project\ Folder/[Tt]emp/
 Project\ Folder/[Oo]bj/
 Project\ Folder/[Bb]uild
 Project\ Folder/[Ll]ibrary/
-sysinfo.txt
-*.stackdump
+Project\ Folder/sysinfo.txt
+Project\ Folder/*.stackdump
  
 # ============================================= #
 # Visual Studio / MonoDevelop / Rider generated #
 # ============================================= #
-[Ee]xported[Oo]bj/
-.vs/
-/*.userprefs
-/*.csproj
-/*.pidb
-/*.suo
-/*.sln*
-/*.user
-/*.unityproj
-/*.booproj
-/.idea*/
+Project\ Folder/[Ee]xported[Oo]bj/
+Project\ Folder/.vs/
+Project\ Folder/*.userprefs
+Project\ Folder/*.csproj
+Project\ Folder/*.pidb
+Project\ Folder/*.suo
+Project\ Folder/*.sln*
+Project\ Folder/*.user
+Project\ Folder/*.unityproj
+Project\ Folder/*.booproj
+Project\ Folder/.idea*/
  
 # ============ #
 # OS generated #

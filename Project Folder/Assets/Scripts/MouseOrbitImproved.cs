@@ -27,6 +27,9 @@ public class MouseOrbitImproved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        target.GetComponent<BoatController>().cam = gameObject;
+
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
