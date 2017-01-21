@@ -7,6 +7,7 @@ public class MouseOrbitImproved : MonoBehaviour
 
     public Transform target;
     public float distance = 5.0f;
+    float tempDis;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
 
@@ -27,7 +28,7 @@ public class MouseOrbitImproved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        tempDis = distance;
         target.GetComponent<BoatController>().cam = gameObject;
 
         Vector3 angles = transform.eulerAngles;
@@ -47,21 +48,33 @@ public class MouseOrbitImproved : MonoBehaviour
     {
         if (target)
         {
-            x += Input.GetAxis(inputCHrz) * xSpeed * distance * 0.02f;
+            x += Input.GetAxis(inputCHrz) * xSpeed * tempDis * 0.02f;
             y -= Input.GetAxis(inputCVrt) * ySpeed * 0.02f;
 
             y = ClampAngle(y, yMinLimit, yMaxLimit);
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+            //distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
 
             RaycastHit hit;
             if (Physics.Linecast(target.position, transform.position, out hit))
             {
-                distance -= hit.distance;
+                tempDis -= hit.distance;
             }
-            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            else
+            {
+                Vector3 optPos = rotation * new Vector3(0.0f,0.0f,-distance) + target.position;
+                if (Physics.Linecast(target.position, optPos, out hit))
+                {
+                    tempDis = hit.distance;
+                }
+                else
+                {
+                    tempDis = distance;
+                }
+            }
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -tempDis);
             Vector3 position = rotation * negDistance + target.position;
 
             transform.rotation = rotation;
