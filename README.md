@@ -1,5 +1,5 @@
 # Babies-in-Space
-Making gravitational waves so simple, even a baby can understand it!
+Making gravitational waves so simple, even a baby can understand it! This is a Global Game Jam 2017 game.
 
 ## Team members
 * Sam Stowers
