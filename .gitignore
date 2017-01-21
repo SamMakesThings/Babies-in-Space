@@ -1,10 +1,10 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Ll]ibrary/
+Project\ Folder/[Tt]emp/
+Project\ Folder/[Oo]bj/
+Project\ Folder/[Bb]uild
+Project\ Folder/[Ll]ibrary/
 sysinfo.txt
 *.stackdump
  
