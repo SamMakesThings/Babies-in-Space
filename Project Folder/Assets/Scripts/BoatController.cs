@@ -8,11 +8,11 @@ public class BoatController : MonoBehaviour {
     public float rotSpeed = .5f;
     public float speed = 5f;
     public float breakSpeed = 10f;
-    //public string inputThrottle = "up";
-    //public string inputBreak = "down";
-    //public string inputLeft = "left";
-    //public string inputRight = "right";
-    //public string inputFire = "right ctrl";
+    public string inputHrz = "Horizontal_p1";
+    public string inputVrt = "Vertical_p1";
+    public string inputCHrz = "Horizontal_c_p1";
+    public string inputCVrt = "Vertical_c_p1";
+    public string inputFire = "Fire1_p1";
     public GameObject bulletPrefab;
 
     // Use this for initialization
@@ -52,10 +52,10 @@ public class BoatController : MonoBehaviour {
 
         //}
 
-        transform.Rotate(0, Input.GetAxis("Horizontal") * rotSpeed, 0);
-        rb.AddForce(transform.forward * Input.GetAxis("Vertical") * rotSpeed);
+        transform.Rotate(0, Input.GetAxis(inputHrz) * rotSpeed, 0);
+        rb.AddForce(transform.forward * Input.GetAxis(inputVrt) * rotSpeed);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(inputFire))
         {
             Vector3 bulletSource = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bullet = Instantiate(bulletPrefab, bulletSource, transform.rotation);
