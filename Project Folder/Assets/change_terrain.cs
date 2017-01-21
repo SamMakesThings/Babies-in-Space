@@ -57,6 +57,15 @@ public class change_terrain : MonoBehaviour {
 		sphere_poses = new int[sumos.Length, 2];
 	}
 
+	void p3(int i, int j) {
+				vmap_new[i,j] += base_elast*(equil_height-hmap[i,j]);
+				vmap[i,j] += Mathf.Clamp(vmap_new[i,j], -max_elast, max_elast);
+				vmap[i,j] -= quad_damp*(vmap[i,j]*vmap[i,j]);
+				vmap[i,j] *= (1.0f - linear_damp);
+				vmap[i,j] = Mathf.Clamp(vmap[i,j], -max_vel, max_vel);
+
+	}
+
 	void p1() {
 		int tdatw = tdat.heightmapWidth;
 		int tdath = tdat.heightmapHeight;
@@ -85,9 +94,8 @@ public class change_terrain : MonoBehaviour {
 				var hmapij = hmap[i,j];
 				var win_jmin = j-window_rad;
 				var lmin = Mathf.Max(0, win_jmin);
-				
+				var llim = Mathf.Min(tdath, j+window_rad+1);				
 				for (int k=kmin; k<klim; k++) {
-					var llim = Mathf.Min(tdath, j+window_rad+1);
 					var windowk = k-(i-window_rad);
 					
 					for (int l=lmin; l<llim; l++) {
@@ -95,21 +103,10 @@ public class change_terrain : MonoBehaviour {
 							vmap_new[i,j] += window[windowk,
 													l-win_jmin]*(hmap[k,l] -
 																 hmapij);
-							
-								/*Mathf.Clamp(window[k-(i-window_rad),
-																l-(j-window_rad)]*(hmap[k,l] -
-																				   hmap[i,j]),
-														 -max_elast,
-														 max_elast);*/
 						}
 					}
 				}
-				vmap_new[i,j] += base_elast*(equil_height-hmap[i,j]);
-				vmap[i,j] += Mathf.Clamp(vmap_new[i,j], -max_elast, max_elast);
-				vmap[i,j] -= quad_damp*(vmap[i,j]*vmap[i,j]);
-				vmap[i,j] *= (1.0f - linear_damp);
-				vmap[i,j] = Mathf.Clamp(vmap[i,j], -max_vel, max_vel);
-
+				p3(i,j);
 			}
 		}
 
