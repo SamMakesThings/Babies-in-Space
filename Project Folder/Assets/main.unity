@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642974, b: 0.574825, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -234,6 +234,11 @@ Prefab:
       propertyPath: m_Name
       value: player1
       objectReference: {fileID: 0}
+    - target: {fileID: 23000010796929868, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f15afbbcef3db4df2976c05978af1e87, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b854261e3d2d841e197cbd745a98c369, type: 2}
   m_IsPrefabParent: 0
@@ -416,6 +421,7 @@ GameObject:
   - component: {fileID: 947317292}
   - component: {fileID: 947317291}
   - component: {fileID: 947317297}
+  - component: {fileID: 947317296}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -491,6 +497,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &947317296
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947317290}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: c8058f87d825d4b3fbbf3f0a71f24537, type: 2}
 --- !u!114 &947317297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,36 +579,16 @@ Prefab:
       propertyPath: m_Name
       value: player0
       objectReference: {fileID: 0}
+    - target: {fileID: 23000010796929868, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02836a4c4d6eb447ebc634ad78570beb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b854261e3d2d841e197cbd745a98c369, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1774218085 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010083707394, guid: b854261e3d2d841e197cbd745a98c369,
-    type: 2}
-  m_PrefabInternal: {fileID: 569964898}
 --- !u!4 &1774218091 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011534961538, guid: b854261e3d2d841e197cbd745a98c369,
     type: 2}
   m_PrefabInternal: {fileID: 569964898}
---- !u!114 &1774218092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1774218085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047e371821b06046bdc1e4d69d8c495, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotSpeed: 0.5
-  speed: 5
-  breakSpeed: 10
-  inputHrz: Horizontal_p1
-  inputVrt: Vertical_p1
-  inputFire: Fire1_p1
-  bulletPrefab: {fileID: 1895618404495860, guid: ef489a0741c202149b2c68281cc5e9b1,
-    type: 2}
-  cam: {fileID: 0}
