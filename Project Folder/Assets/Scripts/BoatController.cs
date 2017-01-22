@@ -19,6 +19,8 @@ public class BoatController : MonoBehaviour {
     public AudioSource rollsound;
 	public aplay_mb apmb;
 	public Transform death_ps;
+    public GameManager gm;
+    public bool mip1 = false;
     Vector3 normal;
     // testing
 
@@ -96,6 +98,7 @@ public class BoatController : MonoBehaviour {
 			var asrc2 = apmb.get_src();
 			asrc2.clip = apmb.clip_dict["explosion"];
 			asrc2.Play();
+            gm.PlayerDeath(mip1);
             Destroy(gameObject);
         }
     }
