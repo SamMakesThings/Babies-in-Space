@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000012226407194}
+  m_RootGameObject: {fileID: 1895618404495860}
   m_IsPrefabParent: 1
---- !u!1 &1000012226407194
+--- !u!1 &1895618404495860
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4000011446707520}
-  - component: {fileID: 33000011404252462}
-  - component: {fileID: 135000013279001296}
-  - component: {fileID: 23000010769689276}
-  - component: {fileID: 114000013655938750}
+  - component: {fileID: 4232401333770398}
+  - component: {fileID: 33446406808490126}
+  - component: {fileID: 135984593518246358}
+  - component: {fileID: 23990895727871098}
+  - component: {fileID: 114973230930588884}
+  - component: {fileID: 54686513119004768}
   m_Layer: 0
-  m_Name: sumo0
-  m_TagString: Instadeath
+  m_Name: GreenBullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000011446707520
+--- !u!4 &4232401333770398
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012226407194}
+  m_GameObject: {fileID: 1895618404495860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.27, y: 33.32, z: 25.8}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23000010769689276
+--- !u!23 &23990895727871098
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012226407194}
+  m_GameObject: {fileID: 1895618404495860}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cea675c91db3d44a8addca21642d4c42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,34 +75,50 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000011404252462
+--- !u!33 &33446406808490126
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012226407194}
+  m_GameObject: {fileID: 1895618404495860}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114000013655938750
+--- !u!54 &54686513119004768
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895618404495860}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114973230930588884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012226407194}
+  m_GameObject: {fileID: 1895618404495860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add0e005bb2b8409c96989ed41ea239a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f10c4b038e93a549afae2b946807096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theta: 0
-  theta_per_second: 0.2
-  revolve_radius: 8
+  speed: 30
+  shooter: {fileID: 0}
   terrain: {fileID: 0}
---- !u!135 &135000013279001296
+  tdat: {fileID: 0}
+  downforce: 0
+--- !u!135 &135984593518246358
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012226407194}
+  m_GameObject: {fileID: 1895618404495860}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
