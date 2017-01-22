@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 0.5
-  speed: 20
+  speed: 30
   breakSpeed: 10
   inputHrz: Horizontal_p1
   inputVrt: Vertical_p1

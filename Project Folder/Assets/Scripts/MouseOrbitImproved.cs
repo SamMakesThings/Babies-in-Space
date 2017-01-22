@@ -28,6 +28,11 @@ public class MouseOrbitImproved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+		inputCHrz += "_mac";
+		inputCVrt += "_mac";
+		#endif
+		
         tempDis = distance;
         target.GetComponent<BoatController>().cam = gameObject;
 
