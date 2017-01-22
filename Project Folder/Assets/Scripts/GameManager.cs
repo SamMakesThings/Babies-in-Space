@@ -4,25 +4,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	public int m_NumRoundsToWin = 3;            // The number of rounds a single player has to win to win the game.
-	public float m_StartDelay = 3f;             // The delay between the start of RoundStarting and RoundPlaying phases.
-	public float m_EndDelay = 3f;               // The delay between the end of RoundPlaying and RoundEnding phases.
-	public MouseOrbitImproved  m_CameraControl;       // Reference to the CameraControl script for control during different phases.
-	public Text m_MessageText;                  // Reference to the overlay Text to display winning text, etc.
-	public GameObject BallPrefab;             // Reference to the prefab the players will control.
-	public BallManager[] Balls;               // A collection of managers for enabling and disabling different aspects of the tanks.
+	public int m_NumRoundsToWin = 3;
+	public float m_StartDelay = 3f;
+	public float m_EndDelay = 3f;
+	public MouseOrbitImproved  m_CameraControl;
+	public Text m_MessageText;
+	public GameObject BallPrefab;
+	public BallManager[] Balls;        
 
 
-	private int m_RoundNumber;                  // Which round the game is currently on.
-	private WaitForSeconds m_StartWait;         // Used to have a delay whilst the round starts.
-	private WaitForSeconds m_EndWait;           // Used to have a delay whilst the round or game ends.
-	private BallManager m_RoundWinner;          // Reference to the winner of the current round.  Used to make an announcement of who won.
-	private BallManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
+	private int m_RoundNumber;         
+	private WaitForSeconds m_StartWait;
+	private WaitForSeconds m_EndWait;  
+	private BallManager m_RoundWinner; 
+	private BallManager m_GameWinner;  
 
 
 	private void Start()
 	{
-		// Create the delays so they only have to be made once.
 		m_StartWait = new WaitForSeconds (m_StartDelay);
 		m_EndWait = new WaitForSeconds (m_EndDelay);
 
@@ -31,10 +30,8 @@ public class GameManager : MonoBehaviour
 		
 	private void SpawnAllBalls()
 	{
-		// For all the tanks...
 		for (int i = 0; i < Balls.Length; i++)
 		{
-			// ... create them, set their player number and references needed for control.
 			Balls[i].m_Instance =
 				Instantiate(BallPrefab, Balls[i].m_SpawnPoint.position, Balls[i].m_SpawnPoint.rotation) as GameObject;
 			Balls[i].m_PlayerNumber = i + 1;
@@ -42,28 +39,18 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	// This is called from start and will run each phase of the game one after another.
 	private IEnumerator GameLoop ()
 	{
-		// Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
 		yield return StartCoroutine (RoundStarting ());
-
-		// Once the 'RoundStarting' coroutine is finished, run the 'RoundPlaying' coroutine but don't return until it's finished.
 		yield return StartCoroutine (RoundPlaying());
-
-		// Once execution has returned here, run the 'RoundEnding' coroutine, again don't return until it's finished.
 		yield return StartCoroutine (RoundEnding());
 
-		// This code is not run until 'RoundEnding' has finished.  At which point, check if a game winner has been found.
 		if (m_GameWinner != null)
 		{
-			// If there is a game winner, restart the level.
 			Application.LoadLevel (Application.loadedLevel);
 		}
 		else
 		{
-			// If there isn't a winner yet, restart this coroutine so the loop continues.
-			// Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
 			StartCoroutine (GameLoop ());
 		}
 	}
