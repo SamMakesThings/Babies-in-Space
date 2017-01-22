@@ -120,9 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4047e371821b06046bdc1e4d69d8c495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 0}
+  tdat: {fileID: 0}
+  rb: {fileID: 54000014199261724}
   rotSpeed: 0.5
   speed: 30
   breakSpeed: 10
+  downforce: 10
   inputHrz: Horizontal_p1
   inputVrt: Vertical_p1
   inputFire: Fire1_p1
