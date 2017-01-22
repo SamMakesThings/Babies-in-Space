@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SunRay4
+  m_Shader: {fileID: 4800000, guid: a6118f19d8e3ab64dbaedc1dd8995bb1, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Glow
+      second: 8.071431
+    - first:
+        name: _Radius
+      second: 0.49
+    - first:
+        name: _RayGlow
+      second: 3.4107144
+    - first:
+        name: _RayRing
+      second: 1
+    - first:
+        name: _RayString
+      second: 0.37642837
+    - first:
+        name: _Rays
+      second: 5.017857
+    - first:
+        name: _Seed
+      second: -1.4285713
+    - first:
+        name: _SpeedRay
+      second: 3.3928573
+    - first:
+        name: _SpeedRing
+      second: 2.5000005
+    - first:
+        name: _Zoom
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Ray
+      second: {r: 1, g: 0.6, b: 0.1, a: 1}
+    - first:
+        name: _RayLight
+      second: {r: 1, g: 0.95, b: 1, a: 1}
