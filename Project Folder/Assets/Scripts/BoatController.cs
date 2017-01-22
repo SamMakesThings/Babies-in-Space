@@ -51,7 +51,7 @@ public class BoatController : MonoBehaviour {
 
         //}
 
-        rb.AddForce(cam.transform.forward * Input.GetAxis(inputVrt) * speed);
+        rb.AddForce(cam.transform.forward * -Input.GetAxis(inputVrt) * speed);
         rb.AddForce(cam.transform.right * Input.GetAxis(inputHrz) * speed);
 
         if (Input.GetButtonDown(inputFire))
