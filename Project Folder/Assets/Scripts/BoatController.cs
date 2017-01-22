@@ -15,6 +15,7 @@ public class BoatController : MonoBehaviour {
     public string inputFire;
     public GameObject bulletPrefab;
     public GameObject cam;
+    Vector3 normal;
 
 	void Start() {
 		tdat = terrain.terrainData;
@@ -25,7 +26,7 @@ public class BoatController : MonoBehaviour {
         rb.AddForce(cam.transform.right * Input.GetAxis(inputHrz) * speed);
 
 		var localpos = terrain.transform.InverseTransformPoint(transform.position);
-		var normal = tdat.GetInterpolatedNormal(localpos.x / tdat.size.x,
+		normal = tdat.GetInterpolatedNormal(localpos.x / tdat.size.x,
 												localpos.z / tdat.size.z);
 
 		rb.AddForce(-normal * downforce);
@@ -40,6 +41,9 @@ public class BoatController : MonoBehaviour {
             Vector3 bulletSource = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bullet = Instantiate(bulletPrefab, bulletSource, cam.transform.rotation);
             bullet.GetComponent<BulletController>().shooter = gameObject;
+            bullet.GetComponent<BulletController>().terrain = terrain;
+            bullet.GetComponent<BulletController>().tdat = tdat;
+            bullet.GetComponent<Rigidbody>().velocity = (cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal) * bullet.GetComponent<BulletController>().speed;
         }
 
         

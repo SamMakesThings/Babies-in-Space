@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 135984593518246358}
   - component: {fileID: 23990895727871098}
   - component: {fileID: 114973230930588884}
+  - component: {fileID: 54686513119004768}
   m_Layer: 0
   m_Name: BulletPrefab
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1895618404495860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,6 +82,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895618404495860}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54686513119004768
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895618404495860}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114973230930588884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,8 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f10c4b038e93a549afae2b946807096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
   shooter: {fileID: 0}
+  terrain: {fileID: 0}
+  tdat: {fileID: 0}
+  downforce: 0
 --- !u!135 &135984593518246358
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -101,7 +120,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895618404495860}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
