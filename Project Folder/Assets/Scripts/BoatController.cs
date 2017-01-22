@@ -14,12 +14,14 @@ public class BoatController : MonoBehaviour {
     public string inputFire;
     public GameObject bulletPrefab;
     public GameObject cam;
+    public AudioSource rollsound;
     Vector3 normal;
     // testing
 
 	void Start() {
 		tdat = terrain.terrainData;
-	}
+        rollsound = GetComponent<AudioSource>();
+    }
 
 	void FixedUpdate() {
         rb.AddForce((cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * -Input.GetAxis(inputVrt) * speed);
@@ -46,7 +48,11 @@ public class BoatController : MonoBehaviour {
             bullet.GetComponent<Rigidbody>().velocity = (cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * bullet.GetComponent<BulletController>().speed;
         }
 
-        
+        float magnitude = rb.velocity.magnitude;
+        rollsound.volume = magnitude / 12;
+        rollsound.pitch = magnitude / 15;
+
+
     }
     //Die when touching sumo
     void OnCollisionEnter(Collision col)
