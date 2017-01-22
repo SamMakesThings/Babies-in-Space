@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour {
     public TerrainData tdat;
     public float downforce = 10f;
     public float gracePeriod = 0.3f;
+ 	public Transform death_ps;
     Rigidbody rb;
     // Use this for initialization
     void Start () {
@@ -45,8 +46,9 @@ public class BulletController : MonoBehaviour {
     //Die when touching sumo
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Instadeath")
+        if (col.gameObject.tag == "Instadeath" || col.gameObject.tag == "Player")
         {
+			Instantiate(death_ps, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

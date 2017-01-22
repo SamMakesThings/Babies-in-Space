@@ -113,6 +113,8 @@ MonoBehaviour:
   terrain: {fileID: 0}
   tdat: {fileID: 0}
   downforce: 0
+  gracePeriod: 0.3
+  death_ps: {fileID: 4062597815078524, guid: 4498632e492574ddbb1f3938dd901370, type: 2}
 --- !u!135 &135984593518246358
 SphereCollider:
   m_ObjectHideFlags: 1

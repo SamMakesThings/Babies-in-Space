@@ -9,6 +9,8 @@ public class BoatController : MonoBehaviour {
     public float speed;
     public float breakSpeed;
 	public float downforce;
+	public float fire_cd;
+	public float prev_fire;
     public string inputHrz;
     public string inputVrt;
     public string inputFire;
@@ -16,7 +18,7 @@ public class BoatController : MonoBehaviour {
     public GameObject cam;
     public AudioSource rollsound;
 	public aplay_mb apmb;
-	public ParticleSystem death_ps;
+	public Transform death_ps;
     Vector3 normal;
     // testing
 
@@ -51,8 +53,10 @@ public class BoatController : MonoBehaviour {
 	void Update () {
 
 
-        if (Input.GetButtonDown(inputFire))
+        if (Input.GetButtonDown(inputFire) && (Time.time - prev_fire > fire_cd))
         {
+			prev_fire = Time.time;
+			
 			var asrc = apmb.get_src();
 			asrc.clip = apmb.clip_dict["asteroid_fire"];
 			asrc.Play();
