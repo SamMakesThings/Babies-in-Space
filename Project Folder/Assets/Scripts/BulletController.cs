@@ -23,8 +23,10 @@ public class BulletController : MonoBehaviour {
 
         if (gracePeriod <= 0)
         {
-            Physics.IgnoreCollision(GetComponent<Collider>(),
-									shooter.GetComponent<Collider>(), false);
+			if (shooter) {
+				Physics.IgnoreCollision(GetComponent<Collider>(),
+										shooter.GetComponent<Collider>(), false);
+			}
         }
 
         gracePeriod -= Time.deltaTime;

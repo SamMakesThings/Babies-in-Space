@@ -133,6 +133,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1895618404495860, guid: ef489a0741c202149b2c68281cc5e9b1,
     type: 2}
   cam: {fileID: 0}
+  rollsound: {fileID: 0}
+  apmb: {fileID: 0}
+  death_ps: {fileID: 198204387153781754, guid: 4498632e492574ddbb1f3938dd901370, type: 2}
 --- !u!135 &135000013908783384
 SphereCollider:
   m_ObjectHideFlags: 1

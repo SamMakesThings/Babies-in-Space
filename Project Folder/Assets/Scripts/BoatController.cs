@@ -15,6 +15,8 @@ public class BoatController : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject cam;
     public AudioSource rollsound;
+	public aplay_mb apmb;
+	public ParticleSystem death_ps;
     Vector3 normal;
     // testing
 
@@ -29,8 +31,14 @@ public class BoatController : MonoBehaviour {
     }
 
 	void FixedUpdate() {
-        rb.AddForce((cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * -Input.GetAxis(inputVrt) * speed);
-        rb.AddForce((cam.transform.right - Vector3.Dot(cam.transform.right, normal) * normal).normalized * Input.GetAxis(inputHrz) * speed);
+        rb.AddForce((cam.transform.forward -
+					 Vector3.Dot(cam.transform.forward, normal) * normal).normalized *
+					-Input.GetAxis(inputVrt) *
+					speed);
+        rb.AddForce((cam.transform.right -
+					 Vector3.Dot(cam.transform.right, normal) * normal).normalized *
+					Input.GetAxis(inputHrz) *
+					speed);
 
 		var localpos = terrain.transform.InverseTransformPoint(transform.position);
 		normal = tdat.GetInterpolatedNormal(localpos.x / tdat.size.x,
@@ -45,8 +53,13 @@ public class BoatController : MonoBehaviour {
 
         if (Input.GetButtonDown(inputFire))
         {
-            Vector3 bulletSource = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject bullet = Instantiate(bulletPrefab, bulletSource, cam.transform.rotation);
+			var asrc = apmb.get_src();
+			asrc.clip = apmb.clip_dict["asteroid_fire"];
+			asrc.Play();
+
+            GameObject bullet = Instantiate(bulletPrefab,
+											transform.position,
+											cam.transform.rotation);
 			var bc = bullet.GetComponent<BulletController>();
 			bc.shooter = gameObject;
             bc.terrain = terrain;
@@ -66,8 +79,19 @@ public class BoatController : MonoBehaviour {
     //Die when touching sumo
     void OnCollisionEnter(Collision col)
     {
+		if (col.gameObject.tag == "Wall") {
+			var asrc = apmb.get_src();
+			asrc.clip = apmb.clip_dict["bump"];
+			asrc.Play();
+		}
+		
         if (col.gameObject.tag == "Instadeath")
         {
+			Instantiate(death_ps, transform.position, transform.rotation);
+
+			var asrc2 = apmb.get_src();
+			asrc2.clip = apmb.clip_dict["explosion"];
+			asrc2.Play();
             Destroy(gameObject);
         }
     }
