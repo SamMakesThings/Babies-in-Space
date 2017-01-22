@@ -19,6 +19,11 @@ public class BoatController : MonoBehaviour {
     // testing
 
 	void Start() {
+		#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+           inputFire += "_mac";
+           #endif
+
+		
 		tdat = terrain.terrainData;
         rollsound = GetComponent<AudioSource>();
     }
