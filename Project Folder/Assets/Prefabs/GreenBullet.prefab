@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114973230930588884}
   - component: {fileID: 54686513119004768}
   m_Layer: 0
-  m_Name: BulletPrefab
+  m_Name: GreenBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f0803a2acd3fb47e7910f2abdd5b46fe, type: 2}
+  - {fileID: 2100000, guid: cea675c91db3d44a8addca21642d4c42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
