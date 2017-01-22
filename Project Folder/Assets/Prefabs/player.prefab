@@ -294,9 +294,9 @@ MonoBehaviour:
   inputFire: Fire1_p2
   bulletPrefab: {fileID: 1895618404495860, guid: acb2ac33f135e443c9a50ae4e6e863eb,
     type: 2}
-  cam: {fileID: 1000010083707394}
+  cam: {fileID: 0}
   rollsound: {fileID: 0}
-  m_PlayerNumber: 2
+  m_PlayerNumber: 1
 --- !u!135 &135000013908783384
 SphereCollider:
   m_ObjectHideFlags: 1

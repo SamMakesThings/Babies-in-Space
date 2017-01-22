@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 0}
-  tdat: {fileID: 0}
+  tdat: {fileID: 15600000, guid: 75bc509f126e24b888090fbb83490b00, type: 2}
   rb: {fileID: 54401754862638894}
   rotSpeed: 0.5
   speed: 30
@@ -283,7 +283,7 @@ MonoBehaviour:
   inputFire: Fire1_p2
   bulletPrefab: {fileID: 1895618404495860, guid: acb2ac33f135e443c9a50ae4e6e863eb,
     type: 2}
-  cam: {fileID: 0}
+  cam: {fileID: 1443902984431112}
   rollsound: {fileID: 0}
   m_PlayerNumber: 1
 --- !u!114 &114911255948322486
