@@ -78,7 +78,6 @@
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\BoatController.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\MouseOrbitImproved.cs" />
     <Compile Include="Assets\change_terrain.cs" />
     <Compile Include="Assets\move_sumo.cs" />

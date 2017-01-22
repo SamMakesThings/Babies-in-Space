@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour {
@@ -21,8 +21,8 @@ public class BoatController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-        rb.AddForce(cam.transform.forward * -Input.GetAxis(inputVrt) * speed);
-        rb.AddForce(cam.transform.right * Input.GetAxis(inputHrz) * speed);
+        rb.AddForce((cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * -Input.GetAxis(inputVrt) * speed);
+        rb.AddForce((cam.transform.right - Vector3.Dot(cam.transform.right, normal) * normal).normalized * Input.GetAxis(inputHrz) * speed);
 
 		var localpos = terrain.transform.InverseTransformPoint(transform.position);
 		normal = tdat.GetInterpolatedNormal(localpos.x / tdat.size.x,
@@ -42,7 +42,7 @@ public class BoatController : MonoBehaviour {
             bullet.GetComponent<BulletController>().shooter = gameObject;
             bullet.GetComponent<BulletController>().terrain = terrain;
             bullet.GetComponent<BulletController>().tdat = tdat;
-            bullet.GetComponent<Rigidbody>().velocity = (cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal) * bullet.GetComponent<BulletController>().speed;
+            bullet.GetComponent<Rigidbody>().velocity = (cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * bullet.GetComponent<BulletController>().speed;
         }
 
         
