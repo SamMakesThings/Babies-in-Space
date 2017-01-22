@@ -6,10 +6,10 @@ public class BallManager
 {
 	public Color m_PlayerColor;
 	public Transform m_SpawnPoint;
-	[HideInInspector] public int m_PlayerNumber;
-	[HideInInspector] public string m_ColoredPlayerText;
-	[HideInInspector] public GameObject m_Instance;
-	[HideInInspector] public int m_Wins;
+	public int m_PlayerNumber;
+	public string m_ColoredPlayerText;
+	public GameObject m_Instance;
+	public int m_Wins;
 
 
 	private BoatController m_Movement;  
