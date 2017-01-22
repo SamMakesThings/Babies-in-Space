@@ -60,19 +60,19 @@ public class MouseOrbitImproved : MonoBehaviour
             RaycastHit hit;
             if (Physics.Linecast(target.position, transform.position, out hit))
             {
-                tempDis -= hit.distance;
+                y += 1f;
             }
             else
             {
-                Vector3 optPos = rotation * new Vector3(0.0f,0.0f,-distance) + target.position;
-                if (Physics.Linecast(target.position, optPos, out hit))
-                {
-                    tempDis = hit.distance;
-                }
-                else
-                {
-                    tempDis = distance;
-                }
+                //Vector3 optPos = rotation * new Vector3(0.0f,0.0f,-distance) + target.position;
+                //if (Physics.Linecast(target.position, optPos, out hit))
+                //{
+                //    tempDis = hit.distance;
+                //}
+                //else
+                //{
+                //    tempDis = distance;
+                //}
             }
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -tempDis);
             Vector3 position = rotation * negDistance + target.position;

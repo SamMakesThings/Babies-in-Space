@@ -358,7 +358,7 @@ InputManager:
     axis: 1
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Horizonal_c_p2
+    m_Name: Horizontal_c_p2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

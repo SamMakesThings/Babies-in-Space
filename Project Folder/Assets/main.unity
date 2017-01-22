@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642974, b: 0.574825, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -357,6 +357,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f15afbbcef3db4df2976c05978af1e87, type: 2}
+    - target: {fileID: 114290125481219438, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: inputHrz
+      value: Horizontal_p2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114290125481219438, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: inputVrt
+      value: Vertical_p2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b854261e3d2d841e197cbd745a98c369, type: 2}
   m_IsPrefabParent: 0
@@ -642,8 +652,8 @@ MonoBehaviour:
   yMaxLimit: 80
   distanceMin: 0.5
   distanceMax: 15
-  inputCHrz: Horizontal_c_p1
-  inputCVrt: Vertical_c_p1
+  inputCHrz: Horizontal_c_p2
+  inputCVrt: Vertical_c_p2
 --- !u!135 &1075313105 stripped
 SphereCollider:
   m_PrefabParentObject: {fileID: 135000013279001296, guid: 1c4dfc68b18cd4243a86e5d5161d9921,
