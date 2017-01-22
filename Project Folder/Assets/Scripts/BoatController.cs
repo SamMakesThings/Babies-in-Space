@@ -34,7 +34,8 @@ public class BoatController : MonoBehaviour {
         rollsound = GetComponent<AudioSource>();
     }
 
-	void FixedUpdate() {
+	void FixedUpdate()
+    {
         rb.AddForce((cam.transform.forward -
 					 Vector3.Dot(cam.transform.forward, normal) * normal).normalized *
 					-Input.GetAxis(inputVrt) *

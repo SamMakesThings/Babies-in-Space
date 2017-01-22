@@ -112,7 +112,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -208,6 +208,8 @@ MonoBehaviour:
   rollsound: {fileID: 0}
   apmb: {fileID: 0}
   death_ps: {fileID: 4062597815078524, guid: d23a10718e83549729de5c87b6ec78e4, type: 2}
+  gm: {fileID: 0}
+  mip1: 0
 --- !u!114 &114812207382490954
 MonoBehaviour:
   m_ObjectHideFlags: 1

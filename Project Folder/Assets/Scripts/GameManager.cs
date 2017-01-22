@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
         else if (roundEnded && roundEndTime + roundEndDelay < Time.time)
         {
             ResetGame();
+            roundEnded = false;
         }
         {
 
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour {
             UpdateScore();
             if (score.y >= goal)
             {
-                title.text = "GREEN WINS!";
+                title.text = "RED WINS!";
                 winScreen = true;
             }
             else
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour {
             UpdateScore();
             if (score.x >= goal)
             {
-                title.text = "RED WINS!";
+                title.text = "GREEN WINS!";
                 winScreen = true;
             }
             else
