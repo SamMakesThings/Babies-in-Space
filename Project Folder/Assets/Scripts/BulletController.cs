@@ -11,6 +11,7 @@ public class BulletController : MonoBehaviour {
     public float downforce = 10f;
     public float gracePeriod = 0.3f;
  	public Transform death_ps;
+    public float lifeTime = 5f;
     Rigidbody rb;
     // Use this for initialization
     void Start () {
@@ -29,8 +30,14 @@ public class BulletController : MonoBehaviour {
 										shooter.GetComponent<Collider>(), false);
 			}
         }
+        if (lifeTime <= 0)
+        {
+            Instantiate(death_ps, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
 
         gracePeriod -= Time.deltaTime;
+        lifeTime -= Time.deltaTime;
 
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
         var localpos = terrain.transform.InverseTransformPoint(transform.position);
@@ -38,8 +45,6 @@ public class BulletController : MonoBehaviour {
                                                 localpos.z / tdat.size.z);
 
         rb.AddForce(-normal * downforce);
-
-        Destroy(gameObject, 5.0f);
 
     }
 
