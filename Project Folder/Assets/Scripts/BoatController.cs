@@ -15,6 +15,7 @@ public class BoatController : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject cam;
     Vector3 normal;
+    // testing
 
 	void Start() {
 		#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
