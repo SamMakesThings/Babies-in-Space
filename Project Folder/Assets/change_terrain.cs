@@ -27,9 +27,6 @@ public class change_terrain : MonoBehaviour {
 	void Start () {
 		int x = tdat.heightmapWidth;
 		int y = tdat.heightmapHeight;
-		Debug.Log("x "+x+" y "+y);
-		Debug.Log("size "+tdat.size);
-		Debug.Log("hmap scale "+ tdat.heightmapScale);
 		
 		hmap = new float[x, y];
 		vmap = new float[x, y];
@@ -49,7 +46,6 @@ public class change_terrain : MonoBehaviour {
 				if (i != ws || j != ws) {
 					window[i,j] = inter_elast/((i-window_rad)*(i-window_rad) +
 											   (j-window_rad)*(j-window_rad));
-					Debug.Log("window "+i+" "+j+" = "+window[i,j]);
 				}
 			}
 		}
