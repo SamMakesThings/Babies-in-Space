@@ -14,7 +14,8 @@ public class BulletController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-        Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(),
+								shooter.GetComponent<Collider>());
     }
 	
 	// Update is called once per frame
@@ -22,7 +23,8 @@ public class BulletController : MonoBehaviour {
 
         if (gracePeriod <= 0)
         {
-            Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponent<Collider>(), false);
+            Physics.IgnoreCollision(GetComponent<Collider>(),
+									shooter.GetComponent<Collider>(), false);
         }
 
         gracePeriod -= Time.deltaTime;
@@ -36,5 +38,14 @@ public class BulletController : MonoBehaviour {
 
         Destroy(gameObject, 5.0f);
 
+    }
+
+    //Die when touching sumo
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Instadeath")
+        {
+            Destroy(gameObject);
+        }
     }
 }

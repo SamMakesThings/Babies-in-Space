@@ -47,10 +47,14 @@ public class BoatController : MonoBehaviour {
         {
             Vector3 bulletSource = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject bullet = Instantiate(bulletPrefab, bulletSource, cam.transform.rotation);
-            bullet.GetComponent<BulletController>().shooter = gameObject;
-            bullet.GetComponent<BulletController>().terrain = terrain;
-            bullet.GetComponent<BulletController>().tdat = tdat;
-            bullet.GetComponent<Rigidbody>().velocity = (cam.transform.forward - Vector3.Dot(cam.transform.forward, normal) * normal).normalized * bullet.GetComponent<BulletController>().speed;
+			var bc = bullet.GetComponent<BulletController>();
+			bc.shooter = gameObject;
+            bc.terrain = terrain;
+            bc.tdat = tdat;
+            bc.GetComponent<Rigidbody>().velocity =
+				((cam.transform.forward -
+				  Vector3.Dot(cam.transform.forward, normal) * normal).normalized *
+				 bc.speed);
         }
 
         float magnitude = rb.velocity.magnitude;
