@@ -19,7 +19,6 @@ public class BallManager
 
 	private BoatController m_Movement;                        // Reference to tank's movement script, used to disable and enable control.
 	private BulletController m_Shooting;                        // Reference to tank's shooting script, used to disable and enable control.
-	private GameObject m_CanvasGameObject;                  // Used to disable the world space UI during the Starting and Ending phases of each round.
 
 
 	public void Setup ()
@@ -27,15 +26,12 @@ public class BallManager
 		// Get references to the components.
 		m_Movement = m_Instance.GetComponent<BoatController> ();
 		m_Shooting = m_Instance.GetComponent<BulletController> ();
-		m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas> ().gameObject;
-
-		// Set the player numbers to be consistent across the scripts.
 		m_Movement.m_PlayerNumber = m_PlayerNumber;
 		m_Shooting.m_PlayerNumber = m_PlayerNumber;
 
 		// Create a string using the correct color that says 'PLAYER 1' etc based on the tank's color and the player's number.
 		m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
-
+	}
 
 
 	// Used during the phases of the game where the player shouldn't be able to control their tank.
@@ -44,7 +40,7 @@ public class BallManager
 		m_Movement.enabled = false;
 		m_Shooting.enabled = false;
 
-		m_CanvasGameObject.SetActive (false);
+		//m_CanvasGameObject.SetActive (false);
 	}
 
 
@@ -54,7 +50,7 @@ public class BallManager
 		m_Movement.enabled = true;
 		m_Shooting.enabled = true;
 
-		m_CanvasGameObject.SetActive (true);
+		//m_CanvasGameObject.SetActive (true);
 	}
 
 
@@ -67,5 +63,4 @@ public class BallManager
 		m_Instance.SetActive (false);
 		m_Instance.SetActive (true);
 	}
-}
 }

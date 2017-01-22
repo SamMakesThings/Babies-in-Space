@@ -11,6 +11,7 @@ public class BulletController : MonoBehaviour {
     public float downforce = 10f;
     public float gracePeriod = 0.3f;
     Rigidbody rb;
+	public int m_PlayerNumber = 1;
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();

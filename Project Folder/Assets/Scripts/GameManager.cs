@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	public int m_NumRoundsToWin = 5;            // The number of rounds a single player has to win to win the game.
+	public int m_NumRoundsToWin = 3;            // The number of rounds a single player has to win to win the game.
 	public float m_StartDelay = 3f;             // The delay between the start of RoundStarting and RoundPlaying phases.
 	public float m_EndDelay = 3f;               // The delay between the end of RoundPlaying and RoundEnding phases.
-	public MouseOrbitImproved m_CameraControl;       // Reference to the CameraControl script for control during different phases.
+	public MouseOrbitImproved  m_CameraControl;       // Reference to the CameraControl script for control during different phases.
 	public Text m_MessageText;                  // Reference to the overlay Text to display winning text, etc.
-	public GameObject m_TankPrefab;             // Reference to the prefab the players will control.
-	public BallManager[] m_Tanks;               // A collection of managers for enabling and disabling different aspects of the tanks.
+	public GameObject BallPrefab;             // Reference to the prefab the players will control.
+	public BallManager[] Balls;               // A collection of managers for enabling and disabling different aspects of the tanks.
 
 
 	private int m_RoundNumber;                  // Which round the game is currently on.
@@ -27,43 +27,20 @@ public class GameManager : MonoBehaviour
 		m_EndWait = new WaitForSeconds (m_EndDelay);
 
 		SpawnAllBalls();
-		SetCameraTargets();
-
-		// Once the tanks have been created and the camera is using them as targets, start the game.
-		StartCoroutine (GameLoop ());
 	}
-
-
+		
 	private void SpawnAllBalls()
 	{
 		// For all the tanks...
 		for (int i = 0; i < Balls.Length; i++)
 		{
 			// ... create them, set their player number and references needed for control.
-			m_Tanks[i].m_Instance =
-				Instantiate(m_TankPrefab, m_Tanks[i].m_SpawnPoint.position, m_Tanks[i].m_SpawnPoint.rotation) as GameObject;
-			m_Tanks[i].m_PlayerNumber = i + 1;
-			m_Tanks[i].Setup();
+			Balls[i].m_Instance =
+				Instantiate(BallPrefab, Balls[i].m_SpawnPoint.position, Balls[i].m_SpawnPoint.rotation) as GameObject;
+			Balls[i].m_PlayerNumber = i + 1;
+			Balls[i].Setup();
 		}
 	}
-
-
-	private void SetCameraTargets()
-	{
-		// Create a collection of transforms the same size as the number of tanks.
-		Transform[] targets = new Transform[Balls.Length];
-
-		// For each of these transforms...
-		for (int i = 0; i < targets.Length; i++)
-		{
-			// ... set it to the appropriate tank transform.
-			targets[i] = Balls[i].m_Instance.transform;
-		}
-
-		// These are the targets the camera should follow.
-		m_CameraControl.m_Targets = targets;
-	}
-
 
 	// This is called from start and will run each phase of the game one after another.
 	private IEnumerator GameLoop ()
@@ -96,10 +73,7 @@ public class GameManager : MonoBehaviour
 	{
 		// As soon as the round starts reset the tanks and make sure they can't move.
 		ResetAllBalls ();
-		DisableTankControl ();
-
-		// Snap the camera's zoom and position to something appropriate for the reset tanks.
-		m_CameraControl.SetStartPositionAndSize ();
+		DisableBallsControl ();
 
 		// Increment the round number and display text showing the players what round it is.
 		m_RoundNumber++;
@@ -113,7 +87,7 @@ public class GameManager : MonoBehaviour
 	private IEnumerator RoundPlaying ()
 	{
 		// As soon as the round begins playing let the players control the tanks.
-		EnableTankControl ();
+		EnableBallsControl ();
 
 		// Clear the text from the screen.
 		m_MessageText.text = string.Empty;
@@ -130,7 +104,7 @@ public class GameManager : MonoBehaviour
 	private IEnumerator RoundEnding ()
 	{
 		// Stop tanks from moving.
-		DisableTankControl ();
+		DisableBallsControl ();
 
 		// Clear the winner from the previous round.
 		m_RoundWinner = null;
@@ -161,10 +135,10 @@ public class GameManager : MonoBehaviour
 		int numTanksLeft = 0;
 
 		// Go through all the tanks...
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
 			// ... and if they are active, increment the counter.
-			if (m_Tanks[i].m_Instance.activeSelf)
+			if (Balls[i].m_Instance.activeSelf)
 				numTanksLeft++;
 		}
 
@@ -175,14 +149,14 @@ public class GameManager : MonoBehaviour
 
 	// This function is to find out if there is a winner of the round.
 	// This function is called with the assumption that 1 or fewer tanks are currently active.
-	private TankManager GetRoundWinner()
+	private BallManager GetRoundWinner()
 	{
 		// Go through all the tanks...
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
 			// ... and if one of them is active, it is the winner so return it.
-			if (m_Tanks[i].m_Instance.activeSelf)
-				return m_Tanks[i];
+			if (Balls[i].m_Instance.activeSelf)
+				return Balls[i];
 		}
 
 		// If none of the tanks are active it is a draw so return null.
@@ -191,14 +165,14 @@ public class GameManager : MonoBehaviour
 
 
 	// This function is to find out if there is a winner of the game.
-	private TankManager GetGameWinner()
+	private BallManager GetGameWinner()
 	{
 		// Go through all the tanks...
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
 			// ... and if one of them has enough rounds to win the game, return it.
-			if (m_Tanks[i].m_Wins == m_NumRoundsToWin)
-				return m_Tanks[i];
+			if (Balls[i].m_Wins == m_NumRoundsToWin)
+				return Balls[i];
 		}
 
 		// If no tanks have enough rounds to win, return null.
@@ -220,9 +194,9 @@ public class GameManager : MonoBehaviour
 		message += "\n\n\n\n";
 
 		// Go through all the tanks and add each of their scores to the message.
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
-			message += m_Tanks[i].m_ColoredPlayerText + ": " + m_Tanks[i].m_Wins + " WINS\n";
+			message += Balls[i].m_ColoredPlayerText + ": " + Balls[i].m_Wins + " WINS\n";
 		}
 
 		// If there is a game winner, change the entire message to reflect that.
@@ -234,29 +208,29 @@ public class GameManager : MonoBehaviour
 
 
 	// This function is used to turn all the tanks back on and reset their positions and properties.
-	private void ResetAllTanks()
+	private void ResetAllBalls()
 	{
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
-			m_Tanks[i].Reset();
+			Balls[i].Reset();
 		}
 	}
 
 
-	private void EnableTankControl()
+	private void EnableBallsControl()
 	{
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
-			m_Tanks[i].EnableControl();
+			Balls[i].EnableControl();
 		}
 	}
 
 
-	private void DisableTankControl()
+	private void DisableBallsControl()
 	{
-		for (int i = 0; i < m_Tanks.Length; i++)
+		for (int i = 0; i < Balls.Length; i++)
 		{
-			m_Tanks[i].DisableControl();
+			Balls[i].DisableControl();
 		}
 	}
 }

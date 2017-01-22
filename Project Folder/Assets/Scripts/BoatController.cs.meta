@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: 4047e371821b06046bdc1e4d69d8c495
-timeCreated: 1484973418
+timeCreated: 1485083427
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - terrain: {instanceID: 0}
+  - tdat: {fileID: 15600000, guid: 75bc509f126e24b888090fbb83490b00, type: 2}
+  - rb: {instanceID: 0}
+  - bulletPrefab: {fileID: 1895618404495860, guid: ef489a0741c202149b2c68281cc5e9b1,
+      type: 2}
+  - cam: {instanceID: 0}
+  - rollsound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

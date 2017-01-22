@@ -16,6 +16,7 @@ public class BoatController : MonoBehaviour {
     public GameObject cam;
     public AudioSource rollsound;
     Vector3 normal;
+	public int m_PlayerNumber = 1;
     // testing
 
 	void Start() {

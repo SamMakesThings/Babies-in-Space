@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114973230930588884}
   - component: {fileID: 54686513119004768}
   m_Layer: 0
-  m_Name: BulletPrefab
+  m_Name: RedBullet
   m_TagString: Instadeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   terrain: {fileID: 0}
   tdat: {fileID: 0}
   downforce: 0
+  gracePeriod: 0.3
 --- !u!135 &135984593518246358
 SphereCollider:
   m_ObjectHideFlags: 1
