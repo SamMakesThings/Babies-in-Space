@@ -15,6 +15,7 @@ public class BoatController : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject cam;
     Vector3 normal;
+    // testing
 
 	void Start() {
 		tdat = terrain.terrainData;
