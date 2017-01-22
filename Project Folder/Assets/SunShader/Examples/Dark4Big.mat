@@ -24,40 +24,40 @@ Material:
     m_Floats:
     - first:
         name: _Detail
-      second: 0
+      second: 0.57
     - first:
         name: _Glow
-      second: 12.839286
+      second: 10
     - first:
         name: _Radius
-      second: 0.1
+      second: 0.3
     - first:
         name: _RayGlow
-      second: 1
+      second: 4.1
     - first:
         name: _RayRing
-      second: 1
+      second: 1.5
     - first:
         name: _RayString
-      second: 0.64357144
+      second: 1.4
     - first:
         name: _Rays
-      second: 3.0892856
+      second: 3.5
     - first:
         name: _Seed
-      second: 0
+      second: 1.4
     - first:
         name: _SpeedHi
-      second: 0.1
+      second: 2.3
     - first:
         name: _SpeedLow
-      second: 0.1
+      second: 0
     - first:
         name: _SpeedRay
-      second: 5.05
+      second: 2.8
     - first:
         name: _SpeedRing
-      second: 0.09999998
+      second: 7.6
     - first:
         name: _Zoom
       second: 0.09
@@ -65,6 +65,12 @@ Material:
     - first:
         name: _Base
       second: {r: 1, g: 0, b: 0, a: 1}
+    - first:
+        name: _BodyNoiseL
+      second: {r: 0.625, g: 0.125, b: 0.0625, a: 0.03125}
+    - first:
+        name: _BodyNoiseS
+      second: {r: 3.6864, g: 61.44, b: 307.2, a: 600}
     - first:
         name: _Color
       second: {r: 0.50555205, g: 0.44144678, b: 0.8455882, a: 0}
@@ -80,3 +86,6 @@ Material:
     - first:
         name: _RayLight
       second: {r: 0.95, g: 0.9524138, b: 1, a: 1}
+    - first:
+        name: _RayNoiseS
+      second: {r: 1, g: 10, b: 5, a: 3}
