@@ -17,6 +17,10 @@ public class BoatController : MonoBehaviour {
     Vector3 normal;
 
 	void Start() {
+		#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+           inputFire += "_mac";
+           #endif
+
 		tdat = terrain.terrainData;
 	}
 
