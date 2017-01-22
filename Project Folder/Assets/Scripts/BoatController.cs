@@ -57,11 +57,20 @@ public class BoatController : MonoBehaviour {
         if (Input.GetButtonDown(inputFire))
         {
             Vector3 bulletSource = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject bullet = Instantiate(bulletPrefab, bulletSource, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, bulletSource, cam.transform.rotation);
             bullet.GetComponent<BulletController>().shooter = gameObject;
         }
 
-
+        
     }
+    //Die when touching sumo
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Instadeath")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
 }

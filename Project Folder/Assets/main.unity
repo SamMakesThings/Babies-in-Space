@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -366,6 +366,11 @@ Prefab:
         type: 2}
       propertyPath: inputVrt
       value: Vertical_p2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114290125481219438, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: inputFire
+      value: Fire1_p2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b854261e3d2d841e197cbd745a98c369, type: 2}
@@ -797,6 +802,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 02836a4c4d6eb447ebc634ad78570beb, type: 2}
+    - target: {fileID: 114290125481219438, guid: b854261e3d2d841e197cbd745a98c369,
+        type: 2}
+      propertyPath: speed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b854261e3d2d841e197cbd745a98c369, type: 2}
   m_IsPrefabParent: 0
@@ -818,7 +828,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -890,6 +900,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011534961538, guid: b854261e3d2d841e197cbd745a98c369,
     type: 2}
   m_PrefabInternal: {fileID: 1209691849}
+--- !u!1 &1596620997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1596620998}
+  m_Layer: 0
+  m_Name: Arena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1596620998
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596620997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1774218091 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011534961538, guid: b854261e3d2d841e197cbd745a98c369,
