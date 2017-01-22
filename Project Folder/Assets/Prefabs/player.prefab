@@ -127,6 +127,8 @@ MonoBehaviour:
   speed: 30
   breakSpeed: 10
   downforce: 10
+  fire_cd: 0.2
+  prev_fire: 0
   inputHrz: Horizontal_p1
   inputVrt: Vertical_p1
   inputFire: Fire1_p1
